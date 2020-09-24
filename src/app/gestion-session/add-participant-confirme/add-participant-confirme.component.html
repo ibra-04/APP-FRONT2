@@ -1,0 +1,114 @@
+<section class="content">
+<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="breadcrumb breadcrumb-style ">
+                    <li class="breadcrumb-item">
+                        <h4 class="page-title">Ajouter Un Participant</h4>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-1">
+                        <a routerLink="/dashboard/main">
+                            <i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-2">
+                        <a href="#" onClick="return false;">Gestion Des Session</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        
+                        Participants Confirmés</li>
+                    <li class="breadcrumb-item active">Ajouter Un Participant </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+
+            
+                            
+                    <ul class="header-buttons m-r-5">
+                                <li>
+                                    <div class="icon-button-demo text-right">
+                                        
+                                        <button class="btn bg-red btn-circle waves-effect waves-circle waves-float " (click)="goBack()">
+                                         <i class="fas fa-times-circle"></i>
+                                        </button>
+                                    </div>
+                                </li>  
+                    </ul>
+               
+
+                
+            </div>
+            <div class="body">
+                <form [formGroup]="addParticipantConfirmeForm" (ngSubmit)="onSubmit(addParticipantConfirmeForm)">
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" formControlName="nom" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                            <div *ngIf="f.nom.errors.required">Nom is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Prénom</label>
+                        <input type="text" formControlName="prenom" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                        <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                            <div *ngIf="f.prenom.errors.required">Prénom is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>CIN</label>
+                        <input type="text" formControlName="cin" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.cin.errors }" />
+                        <div *ngIf="submitted && f.cin.errors" class="invalid-feedback">
+                            <div *ngIf="f.cin.errors.required">CIN is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mail</label>
+                        <input type="text" formControlName="mail" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.mail.errors }" />
+                        <div *ngIf="submitted && f.mail.errors" class="invalid-feedback">
+                            <div *ngIf="f.mail.errors.required">Mail is required</div>
+                            <div *ngIf="f.mail.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Télephone</label>
+                        <input type="text" formControlName="telephone" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" />
+                        <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+                            <div *ngIf="f.telephone.errors.required">Télephone is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Profession</label>
+                        <input type="text" formControlName="profession" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.profession.errors }" />
+                        <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                            <div *ngIf="f.profession.errors.required">Profession is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Lieu De Travail</label>
+                        <input type="text" formControlName="lieudetravail" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.lieudetravail.errors }" />
+                        <div *ngIf="submitted && f.lieudetravail.errors" class="invalid-feedback">
+                            <div *ngIf="f.lieudetravail.errors.required">Lieu De Travail is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>

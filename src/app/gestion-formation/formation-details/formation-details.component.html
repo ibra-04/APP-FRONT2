@@ -1,0 +1,288 @@
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Formation Details</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Gestion Des Formations</a>
+                        </li>
+                        <li class="breadcrumb-item active">Détails du Formation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++ formation details ++++++++++++++++++++++++-->
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h1><strong>Formation: </strong> {{formation?.nom}}</h1>
+                <h2 class="ml-3"><strong>Catégorie: </strong>{{formation?.categorie}}</h2>
+
+            </div>
+            <div class="body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                    <li role="presentation">
+                        <a href="#details" data-toggle="tab" class="active show">Détails</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#objectifs" data-toggle="tab">Objectifs</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#planing" data-toggle="tab">Programme</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active show" id="details">
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="card">
+                        <ul class="list-group list-group-flush">
+                            <table>
+                                <tr>
+                           <td> <li class="list-group-item"><strong>Formateur :</strong></li></td><td> {{formateur.nom}} {{formateur.prenom}}</td>
+                                </tr>
+
+                                <tr>
+                           <td width="120" > <li class="list-group-item"><strong>Lieu :</strong></li></td> <td align="right"> {{formation.lieu}}</td>
+                               </tr>
+
+                               <tr>
+                            <td><li class="list-group-item"><strong>Durée :</strong> </li></td> <td>{{formation.duree}}</td>
+                               </tr>
+
+                               <tr>
+                           <td> <li class="list-group-item"><strong>Certification:</strong> </li></td><td>{{formation.certification}}</td>
+                               </tr>
+
+                               <tr>
+                           <td> <li class="list-group-item"><strong>Status :</strong></li></td><td>{{formation.status}}</td>
+                               </tr>
+
+                               <tr>
+                          <td>  <li class="list-group-item"><strong>Credit Point :</strong></li></td><td>{{formation.creditPoint}}</td>
+                               </tr>
+
+                               <tr>
+                                <td> <li class="list-group-item"><strong>Prix :</strong></li></td><td>{{formation.prix}}</td>
+                               </tr>
+                        </table>
+                    </ul>
+                                </div>
+                            </div>
+                        
+                        
+
+                       
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        Description :
+                                      
+                                    </h2>
+                                    
+                                </div>
+                                <div class="body">
+                                  <!-- {{formation.description}}--> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                       Les Prérequis :
+                                      
+                                    </h2>
+                                    
+                                </div>
+                                <div class="body">
+                                  <!-- {{formation.prerequis}}-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            <div role="tabpanel" class="tab-pane fade" id="objectifs">
+                <div class="row clearfix">
+                    
+                          <div class="card">
+                        <form [formGroup]="objectifFormGroup" (ngSubmit)="addObjectifsToDB(objectifFormGroup)">
+
+
+                            
+                        
+                         
+                         
+                                <table>
+                                    <div formArrayName="objectifs" *ngFor="let item of objectifs.controls; let pointIndex=index">
+                              <div  [formGroupName]="pointIndex">
+                            <tr>
+                                <td width="520">
+                              <label> <i class="fas fa-dot-circle"></i> Objectif {{pointIndex+1}}:</label>
+                               <input formControlName="objectif"  />
+                                </td>
+                                <td>
+                              <button type="button" (click)="deleteObjectif(pointIndex)" class="btn tblActnBtn h-auto">
+                                  <i class="material-icons">delete</i>
+                              </button>
+                                </td>
+                            </tr>
+                              </div>
+                            </div>
+                            <br>
+                            
+                              <button type="button" (click)="addObjectif()"  class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                
+                                  <i class="material-icons col-white" style="padding-top: 1px">add</i>
+                              </button>
+                              <div class="label label-info" *ngIf="objectifs.length==0">
+                               <p> ajouter un objectif</p>
+                              </div>
+                            
+                            </table>
+                        
+                    
+                            
+                            <div class="form-group text-right mb-3" *ngIf="objectifs.length!=0">
+                                <button class="btn btn-primary" >Register</button>
+                            </div>
+
+                          </form>
+                          
+                       
+                        </div>
+                    
+                    
+                        <div class="card" style="width: 12rem;">
+                            
+                        </div>
+                    
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="header">
+                                <h2>
+                                    Objectifs :
+                                  
+                                </h2>
+                                
+                            </div>
+                            <div class="body">
+                                <ul class="list-group list-group-flush" >
+                                    <li  class="list-group-item" *ngFor="let objectif of objectifList"> 
+                                        <i class="fas fa-dot-circle"></i>  {{objectif.objectif}} 
+                                        <button type="button" (click)="deleteObjectifFromDB(objectif.id)" class="btn tblActnBtn h-auto text-right mb-3">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+                    <!--**************************************************************************************-->
+                    <div role="tabpanel" class="tab-pane fade" id="planing">
+                        <div class="row clearfix">
+                    
+                            <div class="card">
+                          <form [formGroup]="planingFormGroup" (ngSubmit)="addPlaningsToDB(planingFormGroup)">
+  
+  
+                              
+                          
+                           
+                           
+                                  <table>
+                                      <div formArrayName="planings" *ngFor="let item of planings.controls; let pointIndex=index">
+                                <div  [formGroupName]="pointIndex">
+                              <tr>
+                                  <td width="520">
+                                <label> <i class="fas fa-dot-circle"></i> {{pointIndex+1}}:</label>
+                                 <input formControlName="planing" [ngModel]="pointIndex+1+': '"  />
+                                  </td>
+                                  <td>
+                                <button type="button" (click)="deletePlaning(pointIndex)" class="btn tblActnBtn h-auto">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                                  </td>
+                              </tr>
+                                </div>
+                              </div>
+                              <br>
+                                <button type="button" (click)="addPlaning()"  class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                    <i class="material-icons col-white" style="padding-top: 1px">add</i>
+                                </button>
+                                <div class="label label-info" *ngIf="planings.length==0">
+                                    <p> ajouter une tache</p>
+                                   </div>
+                              </table>
+                          
+                      
+                              
+                              <div class="form-group text-right mb-3" *ngIf="planings.length!=0">
+                                <button class="btn btn-primary" >Register</button>
+                              </div>
+  
+                            </form>
+                            
+                         
+                          </div>
+                      
+                      
+                          <div class="card" style="width: 12rem;">
+                              
+                          </div>
+                      
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                          <div class="card">
+                              <div class="header">
+                                  <h2>
+                                      Programe : 
+                                    
+                                  </h2>
+                                  
+                              </div>
+                              <div class="body">
+                                  <ul class="list-group list-group-flush" >
+                                      <table>
+                                      <li  class="list-group-item" *ngFor="let planing of planingList , let i=index"> 
+                                          <tr>
+                                          <i class="fas fa-dot-circle"></i>  {{planing.planing}} 
+                                          <button type="button" (click)="deletePlaningFromDB(planing.id)" class="btn tblActnBtn h-auto text-right mb-3">
+                                              <i class="material-icons">delete</i>
+                                          </button>
+                                          </tr>
+                                      </li>
+                                    </table>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+  
+                  </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+</div>
+</section>

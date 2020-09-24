@@ -1,0 +1,92 @@
+
+<style>
+    .md-datepicker-calendar-pane {
+        z-index: 1200;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid">
+        <!-- Basic Examples -->
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="ngxTableHeader">
+
+                                    <ul class="header-buttons-left m-l-5">
+                                        <li class="dropdown m-l-20">
+                                            <h2>
+                                                <strong>List Des Sessions</strong></h2>
+                                        </li>
+                                        <li class="dropdown m-l-20">
+                                            <label for="search-input"><i
+                                                    class="material-icons search-icon">search</i></label>
+                                            <input placeholder="Search" type="text" class="browser-default search-field"
+                                                (keyup)='filterDatatable($event)' aria-label="Search box">
+                                        </li>
+                                    </ul>
+
+                                    <ul class="header-buttons m-r-20">
+                                        <li>
+                                            <div class="icon-button-demo">
+                                                <button type="button" (click)="addSession()"
+                                                    
+                                                    class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                                    <i class="material-icons col-white" style="padding-top: 1px">add</i>
+                                                </button>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <ngx-datatable #table class="material" [rows]="sessions" [columns]="columns"
+                                    [sortType]="'multi'" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                                    [rowHeight]="'60'" [limit]="10">
+                                    
+
+                                    
+                              
+                                    <ngx-datatable-column name="Nom" [width]="120" prop="nom"></ngx-datatable-column>
+                                    <ngx-datatable-column name="Formation" [width]="120" prop="formation"></ngx-datatable-column>
+                                    <ngx-datatable-column name="Date De Création" [width]="120" prop="datecreation"></ngx-datatable-column>
+                                    <ngx-datatable-column name="Date De Début" [width]="120" prop="datedebut"></ngx-datatable-column>
+                                    <ngx-datatable-column name="Date De Fin" [width]="120" prop="datefin"></ngx-datatable-column>
+                                    <ngx-datatable-column name="Nombre Limite De Places" [width]="180" prop="nombreplacelimite"></ngx-datatable-column>
+                                    <ngx-datatable-column name="Participants Existent " [width]="160" prop="nombreexistent"></ngx-datatable-column>
+                                    
+                                    <!-- <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
+                                    </ngx-datatable-column> -->
+                                    <!-- action buttons -->
+                                    <ngx-datatable-column name="Actions" sortable="false" [width]="120">
+                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                            <span>
+                                                <button class="btn tblActnBtn h-auto"  (click)="editRow(row)">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </button>
+                                                <button class="btn tblActnBtn h-auto" (click)='deleteRow(row)'>
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                                <button class="btn tblActnBtn h-auto" (click)='goToParticipants(row)'>
+                                                   <i class="material-icons">supervisor_account</i> 
+                                                </button>
+                                            </span>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                </ngx-datatable>
+
+                                <!-- Add Record Modal Window -->
+                                
+                                <!-- Edit Record Modal Window -->
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

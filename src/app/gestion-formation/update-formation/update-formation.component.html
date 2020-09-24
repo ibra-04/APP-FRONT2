@@ -1,0 +1,129 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Update Une Formation</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">update-formation</a>
+                        </li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                   
+                    <div class="body">
+                        <form [formGroup]="updateFormationForm" (ngSubmit)="updateFormation(updateFormationForm)">
+                            <div class="form-group">
+                                <label>Nom </label>
+                                <input type="text" formControlName="nom" class="form-control"/>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label>Durée</label>
+                                <input type="text" formControlName="duree" class="form-control"/>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Lieu </label>
+                                <input type="text"  formControlName="lieu" class="form-control"   />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Prix </label>
+                                <input type="text"  formControlName="prix" class="form-control"   />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Credit Point </label>
+                                <input type="number"  formControlName="creditPoint" class="form-control"   />
+                            </div>
+
+                            
+                            <div class="form-group default-select">
+                                <label>Catégorie</label>
+                                <select class="form-control"  formControlName="categorie">
+                                    <option *ngFor="let categorie of listCategories" [value]="categorie.nom">
+                                            {{categorie.nom}}
+                                     </option>
+                                 </select>
+                            </div>
+
+
+                            <div class="form-group default-select">
+                                <label>Status </label>
+                                <select class="form-control select2" formControlName="status" data-placeholder="Select">
+                               <option disabled></option>
+                                    <option>En Cours</option>
+                                    <option>Planifier</option>
+
+                                </select>
+                            </div>
+                            
+                            <div class="form-group default-select">
+                                <label>Certification</label>
+                                <select class="form-control"  formControlName="certification" data-placeholder="Select">
+                               
+                                    <option>Free</option>
+                                    <option>Sans</option>
+                                    <option>payé</option>
+
+                                </select>
+                            </div>
+
+
+                           
+                            <div class="form-group default-select">
+                                <label>Formateur</label>
+                                <select class="form-control"  formControlName="formateur">
+                                    <option *ngFor="let formateur of listFormateurs" [value]="formateur.id">
+                                            {{formateur.nom}} {{formateur.prenom}} 
+                                     </option>
+                                 </select>
+ 
+                              
+                            </div>
+
+
+
+
+
+                            
+
+                            <div class="form-group">
+                                <label>Description</label>
+                               <textarea formControlName="description" class="form-control" rows="4" cols="50"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>pre-Requis</label>
+                               <textarea formControlName="prerequis" class="form-control" rows="4" cols="50"></textarea>
+                            </div>
+
+
+
+                            
+                            <div class="form-group">
+                                <button class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>

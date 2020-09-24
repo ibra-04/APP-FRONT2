@@ -1,0 +1,95 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Participant Confirmé</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Gestion Des Session</a>
+                        </li>
+                        <li class="breadcrumb-item active">Participant Confirmé</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+
+                        <h4 class="page-title">Session: {{session?.nom}}</h4>
+                        <div class="icon-button-demo text-right">
+                            <button type="button" (click)="goToAddParticipantConfirme()"
+                                
+                                class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                <i class="material-icons col-white" style="padding-top: 1px">add</i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table id="tableExport"
+                                class="display table table-hover table-checkable order-column m-t-20 width-per-100" >
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>CIN</th>
+                                        <th>Mail</th>
+                                        <th>Télephone</th>
+                                        <th>Date De Confirmation</th>
+                                        <th>Profession</th>
+                                        <th>Lieu De Travail</th>     
+                                        <th>Action</th>                                     
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let participant of listParticipant">
+                                        <td>{{participant.nom}}</td>
+                                        <td>{{participant.prenom}}</td>
+                                        <td>{{participant.cin}}</td>
+                                        <td>{{participant.mail}}</td>
+                                        <td>{{participant.telephone}}</td>
+                                        <td>{{participant.dateconfirmation}}</td>
+                                        <td>{{participant.profession}}</td>
+                                        <td>{{participant.lieudetravail}}</td>
+                                        <td>
+                                            <button class="btn tblActnBtn h-auto" (click)='deleteRow(participant.id)'>
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>CIN</th>
+                                        <th>Mail</th>
+                                        <th>Télephone</th>
+                                        <th>Date De Confirmation</th>
+                                        <th>Profission</th>
+                                        <th>Lieu De Travail</th>
+                                        <th>Action</th> 
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Exportable Table -->
+    </div>
+</section>

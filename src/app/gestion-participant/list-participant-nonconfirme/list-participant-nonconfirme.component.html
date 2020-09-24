@@ -1,0 +1,117 @@
+<section class="content">
+    <div class="container-fluid">
+        <!-- Basic Examples -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header text-right">
+                        
+                            <div class="demo-switch-title">afficher tous les participants</div>
+                            <div class="switch">
+                                <label>
+                                    <input type="checkbox" unchecked>
+                                    <span class="lever switch-col-green"></span>
+                                </label>
+                            </div>
+                        
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table id="js-basic-example" class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Téléphone</th>
+                                        <th>Formation</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr *ngFor="let participant of listParticipant">
+                                        <td>{{participant?.nom}}</td>
+                                        <td>{{participant?.prenom}}</td>
+                                        <td>{{participant?.telephone}}</td>
+                                        <td>{{participant?.formation}}</td>
+
+
+                                        <td>
+
+
+                                            <button class="btn tblActnBtn h-auto" (click)='deleteRow(participant.id)'>
+                                                <i class="material-icons">delete</i>
+                                            </button>
+
+                                            <button class="btn tblActnBtn h-auto" data-toggle="modal" data-target="#markascontacted" (click)='markascontacted(participant)'>
+                                                <i class="fas fa-phone"></i> 
+                                            </button>    
+
+                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" >
+                                                <a routerLink="/gestion-participant/confirme-participant/{{participant.id}}">  <i class="fas fa-check"></i></a>
+                                            </button>
+                                            
+
+                                     
+
+                                        </td>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Téléphone</th>
+                                        <th>Formation</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="markascontacted" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                            
+                            <div class="m-b-20">
+                                <div class="contact-grid">
+                                    <div class="profile-header bg-dark">
+                                        <div class="user-name">{{participantDetails?.nom}} {{participantDetails?.prenom}}</div>
+                                        <div class="name-center">{{participantDetails?.profession}} chez {{participantDetails?.lieudetravail}}</div>
+                                    </div>
+                                    <img src="assets/images/user/PaticipantProfileImage.jpg" class="user-img" alt="">
+                                    <div>
+                                        <span class="phone">
+                                            <i class="fas fa-at"></i> {{participantDetails?.mail}}</span>
+                                    </div>
+                                    <div>
+                                        <span class="phone">
+                                            <i class="material-icons">phone</i>{{participantDetails?.telephone}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h5>{{participantDetails?.datederegistre}}</h5>
+                                            <small>Date d'inscription</small>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5>{{participantDetails?.formation}}</h5>
+                                            <small>Formation</small>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,283 @@
+<section class="content">
+  <div class="container-fluid">
+      <div class="block-header">
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <ul class="breadcrumb breadcrumb-style ">
+                      <li class="breadcrumb-item">
+                          <h4 class="page-title">Home</h4>
+                      </li>
+                      <li class="breadcrumb-item bcrumb-1">
+                          <a routerLink="/dashboard/main">
+                              <i class="fas fa-home"></i> Home</a>
+                      </li>
+                      
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <!-- Widgets -->
+      
+      <!-- #END# Widgets -->
+
+
+      <div class="row clearfix">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+              <div class="card">
+                <div class="header">
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a type="button" data-toggle="modal" data-target="#linkedinUrl"
+                                class="dropdown-toggle" >
+                               <i class="material-icons">more_vert</i>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+              <div class="box-part text-center">
+                  <i class="fab fa-linkedin-in fa-3x col-blue"></i>
+                
+                  <a [href]="linkedinUrl"> <h3>Linkedin</h3></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+              <div class="card">
+                <div class="header">
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a type="button" data-toggle="modal" data-target="#instagramUrl"
+                                 class="dropdown-toggle" >
+                               <i class="material-icons">more_vert</i>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+              <div class="box-part text-center">
+                  <i class="fab fa-instagram fa-3x col-red"></i>
+
+                  <a [href]="instagramUrl"><h3>Instagram</h3></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+              <div class="card">
+                <div class="header">
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a type="button" data-toggle="modal" data-target="#facebookUrl"
+                                 class="dropdown-toggle" >
+                               <i class="material-icons">more_vert</i>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+              <div class="box-part text-center">
+                  <i class="fab fa-facebook-f fa-3x col-blue"></i>                
+                  <a [href]="facebookUrl"><h3>Facebook</h3></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a type="button" data-toggle="modal" data-target="#websiteUrl"
+                                 class="dropdown-toggle" >
+                               <i class="material-icons">more_vert</i>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            <div class="box-part text-center">
+                <i class="fab fa-facebook-f fa-3x col-blue"></i>              
+                <a [href]="websiteUrl"><h3>FiveSkills</h3></a>
+            </div>
+           </div>
+        </div>
+          
+      </div>
+      <div class="row clearfix">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="card">
+                  <div class="body">
+                      <div class="totalEarning">
+                          <h2>le progrès des sessions</h2>
+                      </div>
+
+                      <div *ngFor="let session of listSession">
+
+                      <div class="p-t-10">
+                          <span class="pull-left progress-label">{{session?.nom}}</span>
+                          <span class="pull-right progress-percent label label-primary m-b-5">{{getPercentag(session.nombreplacelimite,session.nombreexistent)}}%</span>
+                      </div>
+                      <div class="earningProgress">
+                          <div class="progress shadow-style">
+                              <div [ngClass]="'progress-bar l-bg-purple width-per-'+getPercentag(session.nombreplacelimite,session.nombreexistent)" role="progressbar" aria-valuenow="25"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+              </div>
+          </div>
+          <!-- Customer Review -->
+
+          <!-- #END# Customer Review -->
+      </div>
+      <!--add facebook url-->
+      <div class="modal fade" id="facebookUrl" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                <div class="editRowModal">
+                                         <div class="modal-header clearfix">
+                               <div class="modal-about">
+                                         <div class="font-weight-bold p-t-10 font-17">
+                                         Url :</div>
+                              </div>
+                                </div>
+                               </div>
+                                 <button type="button" class="btn p-t-10 modal-close-button"
+                             data-dismiss="modal" aria-label="Close">
+                             <i class="material-icons">clear</i>
+                              </button>
+                            </div>
+                      <div class="modal-body">
+                        <form [formGroup]="facebookUrlForm">
+                            <div class="formGroup">
+                                <input type="text" formControlName="url" class="form-control"/>
+                            </div>
+
+                            <div class="formGroup">
+                              <button type="button" class="btn btn-info waves-effect" (click)="addFacebookUrl(facebookUrlForm)">Save</button>
+                            </div>
+                        </form>
+
+                  </div>
+              </div>
+          </div>
+       </div>
+
+
+      <!--add instagram url-->
+      <div class="modal fade" id="instagramUrl" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                <div class="editRowModal">
+                                         <div class="modal-header clearfix">
+                               <div class="modal-about">
+                                         <div class="font-weight-bold p-t-10 font-17">
+                                         Url :</div>
+                              </div>
+                                </div>
+                               </div>
+                                 <button type="button" class="btn p-t-10 modal-close-button"
+                             data-dismiss="modal" aria-label="Close">
+                             <i class="material-icons">clear</i>
+                              </button>
+                            </div>
+                      <div class="modal-body">
+                        <form [formGroup]="instagramUrlForm" (ngSubmit)="addInstagramUrl(instagramUrlForm)">
+                            <div class="formGroup">
+                                <input type="text" formControlName="url" class="form-control"/>
+                            </div>
+
+                            <div class="formGroup">
+                              <button type="button" class="btn btn-info waves-effect" (click)="addInstagramUrl(instagramUrlForm)">Save</button>
+
+                            </div>
+                        </form>
+
+                  </div>
+              </div>
+          </div>
+       </div>
+
+       <!--add linkiden url-->
+      <div class="modal fade" id="linkedinUrl" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                <div class="editRowModal">
+                                         <div class="modal-header clearfix">
+                               <div class="modal-about">
+                                         <div class="font-weight-bold p-t-10 font-17">
+                                         Url :</div>
+                              </div>
+                                </div>
+                               </div>
+                                 <button type="button" class="btn p-t-10 modal-close-button"
+                             data-dismiss="modal" aria-label="Close">
+                             <i class="material-icons">clear</i>
+                              </button>
+                            </div>
+                      <div class="modal-body">
+                        <!--<form [formGroup]="linkedinUrlForm" (ngSubmit)="addLinkedinUrl(linkidenUrlForm)">
+                            <div class="formGroup">
+                                <input type="text" formControlName="url" class="form-control"/>
+                            </div>
+
+                            <div class="formGroup">
+                              <button type="button" class="btn btn-info waves-effect" (click)="addLinkedinUrl(linkedinUrlForm)">Save</button>
+
+                            </div>
+                        </form>-->
+
+                  </div>
+              </div>
+          </div>
+       </div>   
+      <!--add website url-->
+      <div class="modal fade" id="websiteUrl" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                <div class="editRowModal">
+                                         <div class="modal-header clearfix">
+                               <div class="modal-about">
+                                         <div class="font-weight-bold p-t-10 font-17">
+                                         Url :</div>
+                              </div>
+                                </div>
+                               </div>
+                                 <button type="button" class="btn p-t-10 modal-close-button"
+                             data-dismiss="modal" aria-label="Close">
+                             <i class="material-icons">clear</i>
+                              </button>
+                            </div>
+                      <div class="modal-body">
+                          <form [formGroup]="websiteUrlForm" (ngSubmit)="addWebsiteUrl(websiteUrlForm)">
+                              <div class="formGroup">
+                                  <input type="text" formControlName="url" class="form-control"/>
+                              </div>
+
+                              <div class="formGroup">
+                                <button type="button" class="btn btn-info waves-effect" (click)="addWebsiteUrl(websiteUrlForm)">Save</button>
+
+                              </div>
+                          </form>
+
+                  </div>
+              </div>
+          </div>
+       </div>  
+       
+
+  </div>
+</section>

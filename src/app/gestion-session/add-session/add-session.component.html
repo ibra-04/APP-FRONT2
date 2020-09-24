@@ -1,0 +1,93 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Ajouter Une Session</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">ajouter-session</a>
+                        </li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class=" clearfix justify-content-md-center">
+            <div class="col-xs-12 col-12 col-md-12 " >
+                <div class="card">
+                   
+                    <div class="body">
+                        <form [formGroup]="addSessionForm" (ngSubmit)="addSession(addSessionForm)">
+                            <div class="form-group col-md-12">
+                                <label>Nom </label>
+                                <input type="text" formControlName="nom" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"/>
+                                <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nom.errors.required">Nom is required</div>
+                                </div>
+                            </div>
+
+                              <div class="form-group col-md-12">
+                                <label>Nombre Limite De Place </label>
+                                <input type="number" formControlName="nombreplacelimite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombreplacelimite.errors }"/>
+                                <div *ngIf="submitted && f.nombreplacelimite.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nombreplacelimite.errors.required">Nombre Limite De Place is required</div>
+                                </div>
+                              </div>
+                            
+                              <div class="form-group default-select col-md-12">
+                                <label>Formation</label>
+                                <select class="form-control"  formControlName="formation" [ngClass]="{ 'is-invalid': submitted && f.formation.errors }">
+                                    <option disabled></option>
+                                    <option *ngFor="let formation of listFormations" [value]="formation.nom">
+                                            {{formation.nom}}
+                                     </option>
+                                 </select>
+                            </div>
+
+                            <div class="form-group default-select col-md-12">
+                                <label>Formateur</label>
+                                <select class="form-control"  formControlName="formateurid" >
+                                    <option disabled></option>
+                                    <option *ngFor="let formateur of listFormateurs" [value]="formateur.id">
+                                            {{formateur.nom}} {{formateur.prenom}}
+                                     </option>
+                                 </select>
+                            </div>
+ 
+                              <div class=" form-group col-md-7 card">
+                                <label>Date De Début </label>
+                                <input type="text" bsDatepicker
+                                formControlName="datedebut"
+                                [bsConfig]="{ containerClass: 'theme-dark-blue',showWeekNumbers:false,dateInputFormat: 'YYYY/MM/DD' }"
+                                
+                                placeholder="choisir une date"
+                                      class="form-control">
+                              </div>
+                           
+                              <div class=" form-group col-md-7 card">
+                                <label>Date De Fin </label>
+                                <input type="text" bsDatepicker
+                                formControlName="datefin"
+                                [bsConfig]="{ containerClass: 'theme-dark-blue',dateInputFormat: 'YYYY/MM/DD',showWeekNumbers:false }"
+                                placeholder="choisir une date"
+                                      class="form-control">
+                              </div>
+                            
+                            
+                            <div class="form-group col-md">
+                                <button class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
