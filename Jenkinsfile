@@ -6,9 +6,9 @@ node {
 	stage('Git') {
 		git 'https://github.com/ibra-04/APP-FRONT2.git'
 	}
-	//stage('Build') {
-		//sh 'npm install'
-	//}
+	stage('Build') {
+		sh 'npm install'
+	}
 	stage('Building image') {
         docker.withRegistry( 'https://' + registry, registryCredential ) {
 		    def buildName = registry + ":$BUILD_NUMBER"
